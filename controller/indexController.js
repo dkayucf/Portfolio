@@ -29,7 +29,7 @@ module.exports = {
             }
         });
 
-        req.flash('success_msg', 'Thank you for contacting me. I will respond as soon as possible.');
+        req.flash('success_msg', 'Thanks for taking the time to view my portfolio and contacting me.');
         res.redirect('/');
     }
 }
