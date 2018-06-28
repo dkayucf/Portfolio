@@ -9,7 +9,7 @@ module.exports = {
     contactSubmit: (req, res) => {
 
         const message = `${req.body.name} has contacted you from ${req.body.email} on your portfolio website. Message: ${req.body.message}`;
-        console.log(process.env.INVOICEIT_RESET_PASS);
+
         var smtpTransport = nodemailer.createTransport({
             service: 'Gmail',
             auth: {
@@ -23,8 +23,10 @@ module.exports = {
             subject: 'Portfolio Contact Submission',
             html: message
         };
-        smtpTransport.sendMail(mailOptions, function (err) {
-            done(err, 'done');
+        smtpTransport.sendMail(mailOptions, function (error) {
+            if(error){
+                return console.log(error);
+            }
         });
 
         req.flash('success_msg', 'Thank you for contacting me. I will respond as soon as possible.');
