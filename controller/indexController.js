@@ -9,7 +9,7 @@ module.exports = {
     contactSubmit: (req, res) => {
 
         const message = `${req.body.name} has contacted you from ${req.body.email} on your portfolio website. Message: ${req.body.message}`;
-
+        console.log(process.env.INVOICEIT_RESET_PASS);
         var smtpTransport = nodemailer.createTransport({
             service: 'Gmail',
             auth: {
